@@ -19,17 +19,21 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 """
 
 def fn(prices):
-    lowest = [10**4,0]
-    highest = [0,0]
+    lowest = 10**4
+    highest = 0
+    resultado = 0
     for i in range(len(prices)):
         if prices[i] < lowest:
-            lowest = [prices[i], i]
-        if prices[i] > highest:
-            highest = [prices[i], i]
-    
-    pass
+            lowest = prices[i]
+        elif prices[i] > highest:
+            highest = prices[i]
+            if highest - lowest > resultado:
+                resultado = highest - lowest
+    return resultado
+
 
 if __name__ == "__main__":
     test1 = [7,1,5,3,6,4]
     test3 = [7,6,4,3,1]
-    fn(test1)
+    test4 = [2,4,1]
+    print(fn(test4))
